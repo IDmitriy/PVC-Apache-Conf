@@ -2,4 +2,5 @@
 # Host are exists as separate files, pre host, each must be included here for activation
 #
 
+Define PVC_APACHE.LOCALHOST ${PVC_SERVER_ROOT}
 Include conf/hosts/apache.localhost

@@ -1,0 +1,15 @@
+#
+# PVC PHP Configuration
+#
+
+# On windows machine, this should be set manually through SYSTEM variable, like
+# setx PHP_INI_SCAN_DIR "C:\All\Tools\Install\PHP\conf" /M
+# and restart machine...
+
+SetEnv PHP_INI_SCAN_DIR "C:\All\Tools\Install\PHP\conf"
+
+LoadModule php5_module "${PVC_SERVER_ROOT}../PHP/php5apache2_4.dll"
+AddHandler application/x-httpd-php .php
+PHPIniDir "${PVC_SERVER_ROOT}/../PHP"
+
+DirectoryIndex index.php

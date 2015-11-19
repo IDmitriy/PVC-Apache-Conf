@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+
+    ServerAdmin webmaster@asps.kommersant.localhost
+    DocumentRoot "${PVC_DOCUMENT_ROOT}/asps.kommersant/webdata"
+    ServerName asps.kommersant.localhost
+    ErrorLog "logs/asps.kommersant.localhost-error.log"
+    CustomLog "logs/asps.kommersant.localhost-access.log" common
+	
+	<Directory "${PVC_DOCUMENT_ROOT}/asps.kommersant/webdata">
+        Options FollowSymLinks Includes
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+	</Directory>
+	
+</VirtualHost>

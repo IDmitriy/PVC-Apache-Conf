@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+	
+    ServerAdmin webmaster@asu.localhost
+    DocumentRoot "${PVC_DOCUMENT_ROOT}/asu/webdata"
+    ServerName asu.localhost
+    ErrorLog "logs/asu.localhost-error.log"
+    CustomLog "logs/asu.localhost-access.log" common
+	
+	<Directory "${PVC_DOCUMENT_ROOT}/asu/webdata">
+        Options FollowSymLinks Includes
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+	</Directory>
+	
+</VirtualHost>
+
+

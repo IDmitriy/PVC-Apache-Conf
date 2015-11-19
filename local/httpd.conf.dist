@@ -11,3 +11,5 @@ Define PVC_DOCUMENT_ROOT 	"${PVC_SERVER_ROOT}/htdocs"
 
 Define PVC_LISTEN 			80
 Define PVC_SERVER_ADMIN 	admin@example.com
+
+#Include conf/local/php.conf
