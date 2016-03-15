@@ -1,104 +1,11 @@
-# Virtual Hosts
-#
-# Required modules: mod_log_config
-
-# If you want to maintain multiple domains/hostnames on your
-# machine you can setup VirtualHost containers for them. Most configurations
-# use only name-based virtual hosts so the server doesn't need to worry about
-# IP addresses. This is indicated by the asterisks in the directives below.
-#
-# Please see the documentation at 
-# <URL:http://httpd.apache.org/docs/2.4/vhosts/>
-# for further details before you try to setup virtual hosts.
-#
-# You may use the command line option '-S' to verify your virtual host
-# configuration.
-
-#
-# VirtualHost example:
-# Almost any Apache directive may go into a VirtualHost container.
-# The first VirtualHost section is used for all requests that do not
-# match a ServerName or ServerAlias in any <VirtualHost> block.
-#
 <VirtualHost *:80>
-    ServerAdmin oleg.chester@gmail.com
-    DocumentRoot "C:\Bitnami\wampstack-5.4.36-0\apache2\htdocs"
-    ServerName localhost
-    ErrorLog "logs/localhost/error.log"
-    CustomLog "logs/localhost/access.log" common
-</VirtualHost>
-
-<VirtualHost *:80>
-    ServerAdmin oleg.chester@gmail.com
-    DocumentRoot "C:/repos/bankruptcy/webdata"
-    ServerName asps.kommersant.localhost
-    ErrorLog "logs/asps.kommersant.localhost/error.log"
-    CustomLog "logs/asps.kommersant.localhost/access.log" common
-	<Directory "C:/repos/bankruptcy/webdata">
-        Options FollowSymLinks Includes
-        AllowOverride All
-        Order allow,deny
-        Allow from all
-	</Directory>
-</VirtualHost>
-
-<VirtualHost *:443>
-    ServerAdmin oleg.chester@gmail.com
-    DocumentRoot "C:/repos/bankruptcy/webdata"
-    ServerName asps.kommersant.localhost:443
-    ErrorLog "logs/asps.kommersant.localhost/error.log"
-    CustomLog "logs/asps.kommersant.localhost/access.log" common
-	SSLEngine on
-    SSLCertificateFile "C:/Bitnami/wampstack-5.4.36-0/apache2/conf/server.crt"
-    SSLCertificateKeyFile "C:/Bitnami/wampstack-5.4.36-0/apache2/conf/server.key"
-	<Directory "C:/repos/bankruptcy/webdata">
-        Options FollowSymLinks Includes
-        AllowOverride All
-        Order allow,deny
-        Allow from all
-	</Directory>
-</VirtualHost>
-
-
-
-<VirtualHost *:80>
-    ServerAdmin oleg.chester@gmail.com
-    DocumentRoot "C:/repos/asu/webdata"
-    ServerName asu.localhost
-    ErrorLog "logs/asu.localhost/error.log"
-    CustomLog "logs/asu.localhost/access.log" common
-	<Directory "C:/repos/asu/webdata">
-        Options FollowSymLinks Includes
-        AllowOverride All
-        Order allow,deny
-        Allow from all
-	</Directory>
-</VirtualHost>
-
-<VirtualHost *:80>
-    ServerAdmin oleg.chester@gmail.com
-    DocumentRoot "C:/repos/vestnik/webdata"
+    ServerAdmin webmaster@vestnik.localhost
+    DocumentRoot "${PVC_DOCUMENT_ROOT}/vestnik/webdata"
     ServerName vestnik.localhost
-    ErrorLog "logs/vestnik.localhost/error.log"
-    CustomLog "logs/vestnik.localhost/access.log" common
-	<Directory "C:/repos/vestnik/webdata">
-        Options FollowSymLinks Includes
-        AllowOverride All
-        Order allow,deny
-        Allow from all
-	</Directory>
-</VirtualHost>
-
-#
-# dev
-#
-<VirtualHost *:80>
-    ServerAdmin oleg.chester@gmail.com
-    DocumentRoot "C:/repos/develop"
-    ServerName develop.localhost
-    ErrorLog "logs/develop.localhost/error.log"
-    CustomLog "logs/develop.localhost/access.log" common
-	<Directory "C:/repos/develop">
+    ErrorLog "logs/vestnik.localhost-error.log"
+    CustomLog "logs/vestnik.localhost-access.log" common
+	
+	<Directory "${PVC_DOCUMENT_ROOT}/vestnik/webdata">
         Options FollowSymLinks Includes
         AllowOverride All
         Order allow,deny

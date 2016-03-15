@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+
+    ServerAdmin webmaster@bankruptcy.kommersant.localhost
+    DocumentRoot "${PVC_DOCUMENT_ROOT}/bankruptcy.kommersant/webdata"
+    ServerName bankruptcy.kommersant.localhost
+    ErrorLog "logs/bankruptcy.kommersant.localhost-error.log"
+    CustomLog "logs/bankruptcy.kommersant.localhost-access.log" common
+	
+	<Directory "${PVC_DOCUMENT_ROOT}/bankruptcy.kommersant/webdata">
+        Options FollowSymLinks Includes
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+	</Directory>
+	
+</VirtualHost>
